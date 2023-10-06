@@ -25,6 +25,7 @@ spec:
         openshift.io/generated-by: OpenShiftNewApp
       labels:
         deployment: httpd
+        team: bsa-devops
     spec:
       containers:
       - image: dummy
