@@ -27,7 +27,7 @@ spec:
         deployment: httpd
     spec:
       containers:
-      - image: ' '
+      - image: dummy
         name: httpd
         ports:
         - containerPort: 8080
