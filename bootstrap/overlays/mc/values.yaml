@@ -1,0 +1,34 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: true
+    project: bootstrap
+    destination:
+      namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/mervani/acm-demo-managedcluster.git
+      targetRevision: HEAD
+    labels:
+      cluster-type: managed-cluster
+
+applications:
+
+  cluster-config-app:
+    source:
+      path: tenants/cluster-configs
+
+  http-example-app:
+    source:
+      path: example-app
+    destination:
+      namespace: bsa-bootstrapped
+    syncOptions:
+      - RespectIgnoreDifferences=true
+    extraFields: |
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jqPathExpressions:
+            - ".spec.template.spec.containers[] | select(.name == \"httpd\") | .image"

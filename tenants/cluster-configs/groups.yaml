@@ -1,0 +1,17 @@
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: cluster-admins
+users:
+  - admin
+  - user5
+
+---
+
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: devops-group
+users:
+  - user5
+
