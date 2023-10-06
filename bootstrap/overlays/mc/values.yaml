@@ -21,7 +21,7 @@ applications:
 
   http-example-app:
     source:
-      path: example-app
+      path: example-app/overlays/ex1
     destination:
       namespace: bsa-bootstrapped
     syncOptions:
